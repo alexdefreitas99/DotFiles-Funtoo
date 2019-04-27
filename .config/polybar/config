@@ -1,0 +1,327 @@
+[colors]
+background = #17181A
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #000000D
+secondary = #C02A4C
+alert = #bd2c40
+menu = #ffffff
+
+#background = ${xrdb:color2}
+#foreground = ${xrdb:color}
+
+#secondary = ${xrdb:color2}
+#background = #5a000000
+#foreground = #eee
+underline-color = #eee
+
+
+[bar/HDMI]
+#monitor = ${env:MONITOR:LVDS-1}
+monitor = ${env:MONITOR:HDMI-1}
+
+width = 100%
+height = 25
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+bottom  = true
+
+font-0 = Exo 2:pixelsize=8;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=9;1
+font-3 = FontAwesome:pixelsize=10;1
+font-4 = FantasqueSansMono:size=9;1
+
+modules-left = menu bspwm
+modules-center = clock date
+modules-right = network backlight volume filesystem coretemps hddtemp memory cpu temperature fanspeed
+wm-restack = bspwm
+override-redirect = true
+enable-ipc = true
+locale = pt_BR.UTF-8
+
+[bar/HDMI1]
+#monitor = ${env:MONITOR:LVDS-1}
+monitor = ${env:MONITOR:HDMI-1}
+
+width = 100%
+height = 25
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Exo 2:pixelsize=8;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=9;1
+font-3 = FontAwesome:pixelsize=10;1
+font-4 = FantasqueSansMono:pixelsize=8;1
+
+modules-left =
+modules-center =
+modules-right = backlight network battery
+
+
+
+
+#################MODULOS
+
+[module/volume]
+type = internal/volume
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+master-mixer = Master
+
+format-volume = <ramp-volume> <label-volume>
+ramp-volume-0 = 
+ramp-volume-foreground = ${colors.secondary}
+
+bar-volume-width = 10
+bar-volume-empty-foreground = #404040
+bar-volume-empty = ─
+bar-volume-fill = ─
+bar-volume-indicator = |
+
+[module/network]
+type = internal/network
+interface = wlan0
+interval = 3.0
+ping-interval = 3
+udspeed-minwidth = 5
+accumulate-stats = true
+unknown-as-up = true
+format-connected = <ramp-signal> <label-connected>
+format-disconnected = <label-disconnected>
+format-packetloss = <animation-packetloss> <label-connected>
+label-connected = %essid%
+label-connected-foreground = #eefafafa
+label-disconnected = not connected
+label-disconnected-foreground = #66ffffff
+ramp-signal-0 = 
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+animation-packetloss-framerate = 500
+ramp-signal-foreground = ${colors.secondary}
+
+
+
+
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = AC
+poll-interval = 5
+time-format = %H:%M
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+label-charging = Charging %percentage%%
+label-discharging = Discharging %percentage%%
+label-full = Fully charged
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+bar-capacity-width = 10
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+ramp-capacity-foreground = ${colors.secondary}
+animation-charging-foreground = ${colors.secondary}
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+format = <ramp> <label>
+label = %percentage%%
+ramp-0 = 
+ramp-1 = 
+ramp-foreground = ${colors.secondary}
+
+
+[module/coretemps]
+type = custom/script
+exec-if = sensors
+exec = sensors|awk '/Core/{print substr($3, 2, length($3)-5)}'|awk '{if (match($0,/[0-9]+/,m)) print m[0]"°C"}'|tr '\n' ' '
+format =  <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+[module/filesystem]
+type = custom/script
+exec =  df -h / | awk 'NR==2 {print $5}'
+format =  <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+[module/nvidiatemp]
+type = custom/script
+exec = nvidia-smi -q -d temperature|grep "GPU Current Temp"|awk '{print $5}' | sed -n -r '{s/$/ºC/;p}'
+format =  <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+[module/hddtemp]
+type = custom/script
+exec = nc localhost 7634 | awk -F'|' '{print $4"°C",$9"°C"}'
+format =  <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+[module/fanspeed]
+type = custom/script
+exec-if = sensors
+exec = sensors | awk '/Fan/{print $3,$4}'
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+reverse-scroll = false
+
+ws-icon-0 = chat;
+ws-icon-1 = term;
+ws-icon-2 = www;
+ws-icon-3 = archiver;
+ws-icon-4 = code;
+ws-icon-5 = media;
+ws-icon-default = 
+
+label-focused = %icon%
+label-focused-background = #ee050505
+label-focused-foreground =  ${colors.secondary}
+label-focused-padding = 2
+
+label-occupied = %icon%
+label-occupied-padding = 2
+
+label-urgent = %icon%
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+
+label-empty = %icon%
+label-empty-foreground = #444
+label-empty-padding = 2
+
+label-monocle = 
+label-monocle-padding = 2
+label-monocle-background = #171717
+label-monocle-foreground =  ${colors.secondary}
+
+label-floating = 
+label-floating-padding = 2
+label-floating-background = #171717
+label-floating-foreground =  ${colors.secondary}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+label = %percentage%%
+
+[module/memory]
+type = custom/script
+exec = free -m |awk '/^Mem/ {printf("%u%%",100*$3/$2);}'
+interval = 2
+format =  <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+[module/date]
+type = custom/script
+exec =  date +%a\ %d/%m/%y|sed -E 's/\S+/\u&/'
+format = %{A1:calendar:} <label> %{A}
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+click-left="./calendar.sh"
+
+[module/clock]
+type = custom/script
+exec = date +%H:%M:%S
+interval = 1
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
+
+[module/menu]
+type = custom/menu
+format-spacing = 1
+format-background = ${colors.secondary}
+label-open = "   "
+label-open-foreground = ${colors.foreground}
+label-open-background = ${colors.secondary}
+label-close = "   "
+label-close-foreground = ${colors.foreground}
+label-separator = "│"
+label-separator-foreground = ${colors.background}
+
+# Top level
+menu-0-0 = "  "
+menu-0-0-exec = bspc quit -1
+menu-0-1 = "  "
+menu-0-1-exec = sudo reboot
+menu-0-2 = "   "
+menu-0-2-exec = sudo poweroff

@@ -1,0 +1,55 @@
+[global]
+    font = "edges,8"
+    
+    markup = yes    
+    format = "<b>%s</b>\n%b"
+    indicate_hidden = yes
+    alignment = right
+    bounce_freq = 0
+    show_age_threshold = 60
+    ignore_newline = no
+    geometry = "1300x5-5+30"
+    shrink = yes
+    transparency = 10
+    idle_threshold = 120
+    monitor = 0
+    follow = mouse
+    sticky_history = yes
+    show_indicators = yes
+    line_height = 0
+    separator_height = 3
+    padding = 6
+    horizontal_padding = 6
+    separator_color = frame
+    startup_notification = false
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/firefox -new-tab
+    icon_position = left
+    icon_folders = /home/alex/.icons/Maia/apps/:/home/alex/Maia/status/dialogs/
+
+
+[frame]
+    width = 2
+    color = "#404040"
+
+[shortcuts]
+
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+BackSpace
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = "#1D1F21"
+    foreground = "#C5C8C6"
+    timeout = 10
+
+[urgency_normal]
+    background = "#D8CEBE"
+    foreground = "#332F2C"
+    timeout = 10
+
+[urgency_critical]
+    background = "#A73E28"
+    foreground = "#EDDEC9"
+    timeout = 0

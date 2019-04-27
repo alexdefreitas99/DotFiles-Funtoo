@@ -1,0 +1,24 @@
+"amixer -q set Master 2- unmute"
+XF86AudioLowerVolume
+
+"amixer -q set Master 2+ unmute"
+XF86AudioRaiseVolume
+
+"amixer -q set Master toggle"
+XF86AudioMute
+
+
+
+
+
+
+#PACKAGE THAT WORK ACPILIGHT
+
+# Increase backlight
+"xbacklight -inc 5"
+   XF86MonBrightnessUp
+
+# Decrease backlight
+"xbacklight -dec 5"
+   XF86MonBrightnessDown
+
