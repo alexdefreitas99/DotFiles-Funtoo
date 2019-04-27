@@ -1,9 +1,9 @@
 /*
-!/.config/bspwm
-!/.config/duns
-!/.config/polybar
-!/.config/sxhkd
-!/.xbindkeysrc
-!/.xinitrc
-!/kernel-config-4.20
-!/.local/share/fonts
+!.config/bspwm
+!.config/duns
+!.config/polybar
+!.config/sxhkd
+!.xbindkeysrc
+!.xinitrc
+!kernel-config-4.20
+!.local/share/fonts
