@@ -10,12 +10,11 @@
 !./.xinitrc
 !.kernel-config-4.20
 
-!/.local/
 /.local/*
 !/.local/share/
 /.local/share/*
 !/.local/share/fonts/
 
 
-
+.gitignore
 *.gitignore
