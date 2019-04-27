@@ -1,3 +1,9 @@
-Desktop
-fonts.tar.gz
-
+/*
+!/.config/bspwm
+!/.config/duns
+!/.config/polybar
+!/.config/sxhkd
+!/.xbindkeysrc
+!/.xinitrc
+!/kernel-config-4.20
+!/.local/share/fonts
