@@ -1,0 +1,27 @@
+alias kernelupgrade='cd /usr/src/linux && sudo make syncconfig && sudo make modules_prepare && sudo make -j5 && sudo make modules_install && sudo make install && sudo boot-update'
+
+
+ alias tabs="jq '.windows[].tabs[].entries[].url' $HOME/.mozilla/firefox/*.default/sessionstore-backups/recovery.js"
+
+
+# alias ls='python $HOME/better-ls/lsicons.py'
+ alias ls='ls --color'
+ alias dir='dir --color=auto'
+ alias vdir='vdir --color=auto'
+ alias grep='grep --color=auto'
+ alias fgrep='fgrep --color=auto'
+ alias egrep='egrep --color=auto'
+
+#Several aliases
+ alias website='wget --limit-rate=200k --no-clobber --convert-links --random-wait -r -p -E -e robots=off -U mozilla'
+ alias broken="sudo find . -type l -! -exec test -e {} \; -print"
+ alias gpdf="wkhtmltopdf -s A4"
+ alias less=$PAGER
+ alias empty='echo -n Taking out teh trash | pv -qL 10 && rm -rf  ~/.local/share/Trash/files'
+ alias calc='python -qi -c "from math import *"'
+
+#Lists the last 10 commands executed in the shell
+ alias top10='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
+
+#Processos usados pela Web
+ alias ports='lsof -i -n -P'

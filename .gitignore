@@ -6,9 +6,12 @@
 !/.config/dunst/
 !/.config/polybar/
 !/.config/sxhkd/
-!./.xbindkeysrc
-!./.xinitrc
+!.xbindkeysrc
+!.xinitrc
 !.kernel-config-4.20
+!.asoundrc
+!/Zsh/
+!.zshrc
 
 /.local/*
 !/.local/share/
