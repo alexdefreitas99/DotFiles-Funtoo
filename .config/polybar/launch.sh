@@ -8,7 +8,7 @@ while pgrep -x polybar >/dev/null; do sleep 1; done
 
 
 # Launch the bar
-polybar HDMI1  -q &
+#polybar HDMI1  -q &
 polybar HDMI -q &
 
 echo "Launched the main bar ..."
