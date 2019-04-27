@@ -12,8 +12,19 @@ super + e
 	firefox
 
 # screenshot
+# save
+#Print
+#   maim -m 10 -f png ~/Pictures/$(date +%d-%m-%y_%H:%M:%S).png
+
+#Send screenshot to clipboard area
 Print
-   maim -m 10 -f png ~/Pictures/$(date +%d-%m-%y_%H:%M:%S).png
+	maim -m 10 -f png | xclip -selection clipboard -t image/png
+
+#Select area to screenshot and send to clipboard
+super + Print 
+	maim -s | xclip -selection clipboard -t image/png
+
+
 
 # program launcher
 super + @space
