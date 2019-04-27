@@ -13,12 +13,12 @@ super + e
 
 # screenshot
 # save
-#Print
-#   maim -m 10 -f png ~/Pictures/$(date +%d-%m-%y_%H:%M:%S).png
+Print
+   maim -m 10 -f png ~/Pictures/$(date +%d-%m-%y_%H:%M:%S).png
 
 #Send screenshot to clipboard area
-Print
-	maim -m 10 -f png | xclip -selection clipboard -t image/png
+#Print
+#	maim -m 10 -f png | xclip -selection clipboard -t image/png
 
 #Select area to screenshot and send to clipboard
 super + Print 
