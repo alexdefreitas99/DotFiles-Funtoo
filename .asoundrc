@@ -1,17 +1,2 @@
-pcm.!spdif {
-     type hw
-     card 0
-     device 3
-}
-pcm.!default {
-     type plug
-     slave {
-     pcm "spdif"
-     }
- }
-
-
-
-# defaults.pcm.!card Generic
- #defaults.pcm.!device 0
- #efaults.pcm.!ctl Generic
+defaults.pcm.!card 0
+defaults.pcm.!device 3

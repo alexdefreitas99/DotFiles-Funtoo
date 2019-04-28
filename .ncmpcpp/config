@@ -1,0 +1,47 @@
+#VISUALIZER
+
+visualizer_fifo_path                  = "/tmp/mpd.fifo"
+
+visualizer_output_name                = "fifo"
+
+visualizer_sync_interval              = "30"
+
+visualizer_in_stereo                  = "yes"
+
+visualizer_type                       = "spectrum" (spectrum/wave)
+
+visualizer_look                       = "●┃"
+
+# PLAYLIST
+
+playlist_disable_highlight_delay = 1
+
+song_columns_list_format = "(40)[blue]{a} (25)[blue]{t|f}"
+
+song_list_format = " {$2%a$1 - }{$8%t$1}$R{$1%l} "           
+
+playlist_display_mode = "classic"
+
+centered_cursor = "yes"
+
+follow_now_playing_lyrics = "yes"
+
+now_playing_prefix = "$5> "
+
+
+# BARS
+
+progressbar_color = "black"
+
+progressbar_elapsed_color = "blue"
+
+progressbar_look = "⠒⠒⠐"
+
+
+# UI
+
+header_visibility = "yes"
+
+titles_visibility = "yes"
+
+statusbar_visibility = "yes"

@@ -6,6 +6,9 @@
 !/.config/dunst/
 !/.config/polybar/
 !/.config/sxhkd/
+!/.config/mopidy/
+!.mpd/
+!.ncmpcpp/
 !.xbindkeysrc
 !.xinitrc
 !.kernel-config-4.20

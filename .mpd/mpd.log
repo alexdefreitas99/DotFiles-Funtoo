@@ -1,0 +1,10 @@
+Apr 28 18:29 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Apr 28 18:29 : exception: Failed to open '/home/alex/.mpd/state': No such file or directory
+Apr 28 18:29 : exception: Failed to access /home/alex/Música: No such file or directory
+Apr 28 18:37 : client: [0] opened from 127.0.0.1:47370
+Apr 28 18:38 : client: [0] closed
+Apr 28 18:38 : client: [1] opened from 127.0.0.1:47428
+Apr 28 18:39 : client: [1] closed
+Apr 28 18:39 : client: [2] opened from 127.0.0.1:47444
+Apr 28 18:39 : client: [2] closed
+Apr 28 18:39 : client: [3] opened from 127.0.0.1:47448

@@ -53,6 +53,8 @@ xset s 600 600
 ## Autostart programs + scripts
 ##----------------------------------------------------------------------------------------------------------------------##
 #(sleep 2s && dunst) &
+##[ ! -s ~/.config/mpd/pid ] && mpd
+#mopidy &
 udiskie &
 compton --config ~/.config/compton.conf -b &> /tmp/compton.log
 xrandr --dpi 96
