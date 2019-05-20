@@ -16,10 +16,9 @@ menu = #ffffff
 #foreground = #eee
 underline-color = #eee
 
-
-[bar/HDMI]
+[bar/eDP]
 #monitor = ${env:MONITOR:LVDS-1}
-monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP-1}
 
 width = 100%
 height = 25
@@ -44,40 +43,11 @@ font-4 = FantasqueSansMono:size=9;1
 
 modules-left = menu bspwm
 modules-center = clock date
-modules-right = network backlight volume filesystem coretemps hddtemp memory cpu temperature fanspeed
+modules-right = network backlight volume filesystem coretemps hddtemp memory cpu temperature battery
 wm-restack = bspwm
 override-redirect = true
 enable-ipc = true
 locale = pt_BR.UTF-8
-
-[bar/HDMI1]
-#monitor = ${env:MONITOR:LVDS-1}
-monitor = ${env:MONITOR:HDMI-1}
-
-width = 100%
-height = 25
-fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = Exo 2:pixelsize=8;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=9;1
-font-3 = FontAwesome:pixelsize=10;1
-font-4 = FantasqueSansMono:pixelsize=8;1
-
-modules-left =
-modules-center =
-modules-right = backlight network battery
-
-
 
 
 #################MODULOS
@@ -138,9 +108,8 @@ time-format = %H:%M
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full = <ramp-capacity> <label-full>
-label-charging = Charging %percentage%%
-label-discharging = Discharging %percentage%%
-label-full = Fully charged
+label-charging = %percentage%%
+label-discharging =  %percentage%%
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
@@ -179,13 +148,6 @@ type = custom/script
 exec =  df -h / | awk 'NR==2 {print $5}'
 format =  <label>
 format-prefix = " "
-format-prefix-foreground = ${colors.secondary}
-
-[module/nvidiatemp]
-type = custom/script
-exec = nvidia-smi -q -d temperature|grep "GPU Current Temp"|awk '{print $5}' | sed -n -r '{s/$/ºC/;p}'
-format =  <label>
-format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
 
 [module/hddtemp]

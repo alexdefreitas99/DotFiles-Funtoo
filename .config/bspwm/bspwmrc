@@ -1,7 +1,7 @@
 #! /bin/sh
 
-#bspc monitor LVDS-1 -d chat term ww archiver code media
-bspc monitor HDMI-1 -d chat term ww archiver code media
+bspc monitor eDP-1 -d chat term ww archiver code media
+#bspc monitor HDMI-1 -d chat term ww archiver code media
 "$HOME"/.config/polybar/launch.sh &
 #desktop_theme_from_image next &
 sxhkd &

@@ -5,7 +5,7 @@ super + l
 	galculator
 # terminal emulator
 super + Return
-	st
+	xst
 
 #Firefox
 super + e
